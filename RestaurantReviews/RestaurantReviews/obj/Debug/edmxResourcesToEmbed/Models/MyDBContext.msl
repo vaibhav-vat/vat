@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MyDBModelStoreContainer" CdmEntityContainer="MyEntities">
+    <EntitySetMapping Name="DISHES_REVIEWS">
+      <EntityTypeMapping TypeName="MyDBModel.DISHES_REVIEWS">
+        <MappingFragment StoreEntitySet="DISHES_REVIEWS">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RestaurantId" ColumnName="RestaurantId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Quality" ColumnName="Quality" />
+          <ScalarProperty Name="Taste" ColumnName="Taste" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Service" ColumnName="Service" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RESTAURANTS">
+      <EntityTypeMapping TypeName="MyDBModel.RESTAURANT">
+        <MappingFragment StoreEntitySet="RESTAURANTS">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERS">
+      <EntityTypeMapping TypeName="MyDBModel.USER">
+        <MappingFragment StoreEntitySet="USERS">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

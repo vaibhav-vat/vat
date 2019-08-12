@@ -1,0 +1,75 @@
+﻿@model IEnumerable<RestaurantReviews.Models.DISHES_REVIEWS>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Dishes And Reviews</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Name)*@
+            Menu
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quality)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Taste)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            OfferedBy
+            @*@Html.DisplayNameFor(model => model.Service)*@
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>
+        <th>Restaurant
+            @*@Html.DisplayNameFor(model => model.RESTAURANT.Name)*@
+        </th>
+        <th>
+            Reviewer
+            @*@Html.DisplayNameFor(model => model.USER.Name)*@
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Taste)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RESTAURANT.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.USER.Name)
+            </td>
+           
+        </tr>
+    }
+
+</table>
+
+

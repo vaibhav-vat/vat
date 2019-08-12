@@ -1,0 +1,159 @@
+﻿
+@{
+    Layout = "";
+}
+
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-state=1" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <!--<script src="js/jquery-3.2.1.min.js"></script>-->
+    <script src="~/Content/bootstrap.js"></script>
+    <style type="text/css">
+        .bg { /*background-color:red ;  */
+            width: 100%;
+            height: 100%;
+        }
+
+        #log {
+            border: 2px solid white;
+            padding: 60px 40px;
+            margin-top: 80px;
+        }
+
+        img {
+            width: 150px;
+            margin: auto;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            font-weight: bolder;
+            font-size: 50px;
+        }
+
+        label {
+            font-size: 20px;
+            color: black;
+        }
+    </style>
+    <script>
+        function validateform() {
+            var name = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+
+            if (name == "iamawesome" && password == "P@ssword") {
+                alert("Login Successful");
+                return true;
+            } else {
+                alert("Invalid Username or Password");
+                return false;
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container-fluid bg">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12"></div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <form method="post" onsubmit="" >
+                    <h1>Login Form</h1>
+                    <img class=img-responsive img-responsive img-circle src="~/Content/giphy.gif">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" class="form-control" placeholder="Username" id="username" name="Uname">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" placeholder="Password" id="password" name="Upassword">
+                    </div>
+                    <button type="submit"  class="btn btn-success btn-block">Login</button>
+                    @*<button type="submit" name="q"  class="btn btn-success btn-block">Sign Up</button>*@
+
+                    <button type="button" class="btn btn-success btn-block"  onclick="location.href='@Url.Action("Register","UserAuthentication")'">SignUp</button>
+
+                    @*<button type="button" name="signup" class="btn btn-success btn-block" value="SignUp" onclick="location.href='@Url.Action("Register")'" >My2</button>
+                    <button type="button" name="signup" class="btn btn-success btn-block" value="SignUp" onclick="location.href='@Url.Action("Register", "UserAuthentication", new { @class = "btn btn-success btn-block" })'">My1</button>*@
+                   
+                    <label>@ViewBag.Message</label>
+                </form>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12"></div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<h2>LogIn</h2>
+
+    <div>
+        <h4>USER</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Location)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Location)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

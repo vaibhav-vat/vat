@@ -1,0 +1,86 @@
+﻿@model RestaurantReviews.Models.DISHES_REVIEWS
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DISHES_REVIEWS</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Name)*@
+            Menu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Taste)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Taste)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Service)*@
+            OfferedBy
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Service)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+        <dt>
+           Restaurant
+            @*@Html.DisplayNameFor(model => model.RESTAURANT.Name)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RESTAURANT.Name)
+        </dd>
+
+        <dt>
+            Reviewer
+            @*@Html.DisplayNameFor(model => model.USER.Name)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USER.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

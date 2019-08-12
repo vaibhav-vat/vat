@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MyDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DISHES_REVIEWS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RestaurantId" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Quality" Type="varchar" MaxLength="100" />
+          <Property Name="Taste" Type="varchar" MaxLength="100" />
+          <Property Name="Price" Type="varchar" MaxLength="100" />
+          <Property Name="Service" Type="varchar" MaxLength="100" />
+          <Property Name="Comment" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="RESTAURANTS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Location" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="1550" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Location" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__REVIEWS__Restaur__145C0A3F">
+          <End Role="RESTAURANTS" Type="Self.RESTAURANTS" Multiplicity="0..1" />
+          <End Role="DISHES_REVIEWS" Type="Self.DISHES_REVIEWS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RESTAURANTS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DISHES_REVIEWS">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REVIEWS__UserId__15502E78">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+          <End Role="DISHES_REVIEWS" Type="Self.DISHES_REVIEWS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DISHES_REVIEWS">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MyDBModelStoreContainer">
+          <EntitySet Name="DISHES_REVIEWS" EntityType="Self.DISHES_REVIEWS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RESTAURANTS" EntityType="Self.RESTAURANTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__REVIEWS__Restaur__145C0A3F" Association="Self.FK__REVIEWS__Restaur__145C0A3F">
+            <End Role="RESTAURANTS" EntitySet="RESTAURANTS" />
+            <End Role="DISHES_REVIEWS" EntitySet="DISHES_REVIEWS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REVIEWS__UserId__15502E78" Association="Self.FK__REVIEWS__UserId__15502E78">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="DISHES_REVIEWS" EntitySet="DISHES_REVIEWS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MyDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DISHES_REVIEWS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RestaurantId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Quality" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Taste" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Service" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Comment" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RESTAURANT" Relationship="Self.FK__REVIEWS__Restaur__145C0A3F" FromRole="DISHES_REVIEWS" ToRole="RESTAURANTS" />
+          <NavigationProperty Name="USER" Relationship="Self.FK__REVIEWS__UserId__15502E78" FromRole="DISHES_REVIEWS" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="RESTAURANT">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DISHES_REVIEWS" Relationship="Self.FK__REVIEWS__Restaur__145C0A3F" FromRole="RESTAURANTS" ToRole="DISHES_REVIEWS" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="1550" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DISHES_REVIEWS" Relationship="Self.FK__REVIEWS__UserId__15502E78" FromRole="USERS" ToRole="DISHES_REVIEWS" />
+        </EntityType>
+        <Association Name="FK__REVIEWS__Restaur__145C0A3F">
+          <End Role="RESTAURANTS" Type="Self.RESTAURANT" Multiplicity="0..1" />
+          <End Role="DISHES_REVIEWS" Type="Self.DISHES_REVIEWS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RESTAURANTS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DISHES_REVIEWS">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REVIEWS__UserId__15502E78">
+          <End Role="USERS" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="DISHES_REVIEWS" Type="Self.DISHES_REVIEWS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DISHES_REVIEWS">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DISHES_REVIEWS" EntityType="Self.DISHES_REVIEWS" />
+          <EntitySet Name="RESTAURANTS" EntityType="Self.RESTAURANT" />
+          <EntitySet Name="USERS" EntityType="Self.USER" />
+          <AssociationSet Name="FK__REVIEWS__Restaur__145C0A3F" Association="Self.FK__REVIEWS__Restaur__145C0A3F">
+            <End Role="RESTAURANTS" EntitySet="RESTAURANTS" />
+            <End Role="DISHES_REVIEWS" EntitySet="DISHES_REVIEWS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REVIEWS__UserId__15502E78" Association="Self.FK__REVIEWS__UserId__15502E78">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="DISHES_REVIEWS" EntitySet="DISHES_REVIEWS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MyDBModelStoreContainer" CdmEntityContainer="MyEntities">
+          <EntitySetMapping Name="DISHES_REVIEWS">
+            <EntityTypeMapping TypeName="MyDBModel.DISHES_REVIEWS">
+              <MappingFragment StoreEntitySet="DISHES_REVIEWS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RestaurantId" ColumnName="RestaurantId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Quality" ColumnName="Quality" />
+                <ScalarProperty Name="Taste" ColumnName="Taste" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Service" ColumnName="Service" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RESTAURANTS">
+            <EntityTypeMapping TypeName="MyDBModel.RESTAURANT">
+              <MappingFragment StoreEntitySet="RESTAURANTS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="MyDBModel.USER">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
